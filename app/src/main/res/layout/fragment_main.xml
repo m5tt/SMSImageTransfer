@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="m5tt.com.smsimagetransfer.MainActivityFragment"
-    tools:showIn="@layout/activity_main">
+    tools:showIn="@layout/content_main">
 
     <EditText
         android:id="@+id/phoneNum_EditText"

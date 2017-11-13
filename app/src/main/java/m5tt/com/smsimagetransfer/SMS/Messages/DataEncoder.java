@@ -16,12 +16,12 @@ import m5tt.com.smsimagetransfer.SMS.Packets.PacketFactory;
  * Created by chicken on 11/13/17.
  */
 
-public class DataTransfer {
+public class DataEncoder {
 
     File file;
     byte[] encodedFile;
 
-    DataTransfer(File file) throws IOException {
+    DataEncoder(File file) throws IOException {
         this.file = file;
         encodeToBase91();
     }

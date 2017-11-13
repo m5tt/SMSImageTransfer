@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SMSImageTransfer.iml" filepath="$PROJECT_DIR$/SMSImageTransfer.iml" />
+      <module fileurl="file://C:\Users\1550991\Desktop\SMSImageTransfer\SMSImageTransfer.iml" filepath="C:\Users\1550991\Desktop\SMSImageTransfer\SMSImageTransfer.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\1550991\Desktop\SMSImageTransfer\app\app.iml" filepath="C:\Users\1550991\Desktop\SMSImageTransfer\app\app.iml" />
     </modules>
   </component>
 </project>

@@ -8,6 +8,7 @@ import java.util.List;
 
 import m5tt.com.smsimagetransfer.Encoding.Base91Converter;
 import m5tt.com.smsimagetransfer.Encoding.Converter;
+import m5tt.com.smsimagetransfer.SMS.Messages.DataDecoder;
 import m5tt.com.smsimagetransfer.SMS.Packets.Packet;
 import m5tt.com.smsimagetransfer.SMS.Packets.PacketFactory;
 
@@ -36,17 +37,11 @@ public class SMSInputOutput
         return packets;
     }
 
-    public void packetsToFile(List<Packet> packets)
-    {
-        /*
-         * 1) Verify correct order
-         * 2) Decode each packet
-         * 3) Assemble into byte array and write
-         */
+    public void packetsToFile(File outputFile, List<Packet> packets) throws IOException {
 
-        // TODO: for correct order - sort by packet number - should be able to access
+        DataDecoder receiver = new DataDecoder(outputFile, packets);
+        receiver.write();
 
-        return;
     }
 
 
