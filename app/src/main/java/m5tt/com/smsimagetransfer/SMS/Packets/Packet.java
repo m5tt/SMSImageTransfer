@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class Packet {
 
-    public enum PacketType { START_OF_MESSAGE, END_OF_MESSAGE, ACK, MESSAGE_CONTENT}
+    public enum PacketType { MESSAGE_START, MESSAGE_END, MESSAGE_ACK, MESSAGE_CONTENT}
 
     // The size limit for an SMS
     public static final int CHAR_LIMIT=160;
@@ -40,6 +40,10 @@ public class Packet {
 
     public String getBody(){
         return this.body;
+    }
+
+    public PacketType getType(){
+        return this.type;
     }
 
     @Override
