@@ -13,9 +13,10 @@ public class PacketFactory {
 
     public enum PacketControlType { MESSAGE_START, MESSAGE_END, MESSAGE_ACK }
 
-    public Packet getMessageStartPacket(int messageLength, String encoding){
+    public Packet getMessageStartPacket(String filename, int messageLength, String encoding){
         PacketHead head = new PacketHead(Packet.packetTypeValueOf(Packet.PacketType.MESSAGE_START));
-        String messageInfo ="LEN:"+messageLength +  "|" +
+        String messageInfo ="NAME:"+filename + "|" +
+                            "LEN:"+messageLength +  "|" +
                             "ENCODING:"+encoding + "|" +
                             "V_APPLICATION:"+ 1 + "|" +
                             "V_PACKET:"+Packet.VERSION + "|" +
