@@ -1,4 +1,4 @@
-package m5tt.com.smsimagetransfer;
+package m5tt.com.smsimagetransfer.SMS;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,7 +18,7 @@ import m5tt.com.smsimagetransfer.SMS.Packets.Packet;
  * @author Matthew Baldwin
  */
 
-public class SmsReceiver extends BroadcastReceiver
+public class SMSReceiver extends BroadcastReceiver
 {
     private static Map<String, List<Packet>> messages = new HashMap<>();
 
