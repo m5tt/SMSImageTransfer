@@ -19,12 +19,15 @@ import com.github.angads25.filepicker.view.FilePickerDialog;
 
 import java.io.File;
 
+import m5tt.com.smsimagetransfer.SMS.OnSMSSendCompleteListener;
+import m5tt.com.smsimagetransfer.SMS.OnSMSSendProgressUpdateListener;
 import m5tt.com.smsimagetransfer.SMS.SMSInputOutput;
 import m5tt.com.smsimagetransfer.SMS.SMSPacketSender;
+import m5tt.com.smsimagetransfer.SMS.SMSSendPackage;
+import m5tt.com.smsimagetransfer.SMS.SMSSendProgress;
+import m5tt.com.smsimagetransfer.SMS.SMSSendingTask;
 
-/**
- * A placeholder fragment containing a simple view.
- */
+
 public class MainActivityFragment extends Fragment
 {
     private File currentUploadedImage;
@@ -100,10 +103,28 @@ public class MainActivityFragment extends Fragment
                     return;
                 }
 
-                SMSInputOutput fileConverter = new SMSInputOutput();
-                SMSPacketSender packetSender = new SMSPacketSender();
+                SMSSendingTask smsSendingTask = new SMSSendingTask();
 
-                packetSender.sendMessagePackets(fileConverter.fileToPackets(currentUploadedImage), phoneNum);
+                smsSendingTask.setOnSMSSendProgressUpdateListener(new OnSMSSendProgressUpdateListener()
+                {
+                    @Override
+                    public void SMSSendProgressUpdate(SMSSendProgress smsSendProgress)
+                    {
+                        // Update progress bar with current text count / total text count
+                    }
+                });
+
+                smsSendingTask.setOnSMSSendCompleteListener(new OnSMSSendCompleteListener()
+                {
+                    @Override
+                    public void SMSSendComplete(SMSSendingTask.SMSSendingResult smsSendingResult)
+                    {
+                        // Re-enable views and inform the user that they successfully sent all text messages
+                    }
+                });
+
+                // Disable views and start execute
+                smsSendingTask.execute(new SMSSendPackage(currentUploadedImage, phoneNum));
             }
         });
 
