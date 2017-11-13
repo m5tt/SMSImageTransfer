@@ -69,6 +69,9 @@ public class Packet {
         return this;
     }
 
+    public int getNum(){
+        return this.head.getPacketNum();
+    }
     /**
      * Get the packet string representation for sending as SMS
      * @return The packet as a string

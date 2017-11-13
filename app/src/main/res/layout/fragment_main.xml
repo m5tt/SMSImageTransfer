@@ -6,6 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="m5tt.com.smsimagetransfer.MainActivityFragment"
-    tools:showIn="@layout/activity_main">
+    tools:showIn="@layout/content_main">
 
 </android.support.constraint.ConstraintLayout>
