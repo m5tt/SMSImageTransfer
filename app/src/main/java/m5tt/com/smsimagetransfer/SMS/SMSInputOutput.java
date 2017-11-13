@@ -50,6 +50,7 @@ public class SMSInputOutput
         FileInputStream fis = new FileInputStream(file);
 
         byte[] data = new byte[(int) file.length()];
+        fis.read(data);
         fis.close();
 
         return data;
