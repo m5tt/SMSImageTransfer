@@ -1,0 +1,10 @@
+
+wsquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ŞÅµÿ8ú‰Æ›û+
+ksquid:UselessImportCheck"BRemove this unused import 'android.preference.PreferenceActivity'.(Ô¿¾í8û¥‡û+
+|squid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(”èîÚüÿÿÿÿ8ı›û+
+wsquid:S00115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ğ¼»8ı›û+
+Isquid:S1068"-Remove this unused "delimiter" private field.(ŞÅµÿ8ˆÚÚœû+
+rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(›‚ãÜøÿÿÿÿ
+nsquid:S3008"RRename this field "VERSION" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜È™á8á¦°Ÿû+
+Isquid:S1444"-Make this "public static VERSION" field final(˜È™á8á¦°Ÿû+
+†"squid:ClassVariableVisibilityCheck"SMake VERSION a static final constant or non-public and provide accessors if needed.(˜È™á8á¦°Ÿû+

@@ -55,9 +55,13 @@ public class PacketFactory {
         int packetNum=0;
         int msgStart=0;
         int msgEnd=0;
-        while(msgStart != message.length()){
+        while(msgStart < message.length()){
             PacketHead head = new PacketHead(packetNum);
             msgEnd = msgStart+(Packet.CHAR_LIMIT-head.getLength());
+
+            if(msgEnd > message.length())
+                msgEnd = message.length();
+
             String packetBody = message.substring(msgStart, msgEnd);
             msgStart = msgEnd;
             packetNum++;

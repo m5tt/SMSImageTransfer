@@ -39,8 +39,8 @@ public class SMSInputOutput
 
     public void packetsToFile(File outputFile, List<Packet> packets) throws IOException {
 
-        DataDecoder receiver = new DataDecoder(outputFile, packets);
-        receiver.write();
+        DataDecoder decoder = new DataDecoder(outputFile, packets);
+        decoder.write();
 
     }
 
