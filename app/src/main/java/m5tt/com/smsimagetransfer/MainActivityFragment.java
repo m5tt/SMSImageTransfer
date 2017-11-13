@@ -18,6 +18,7 @@ import com.github.angads25.filepicker.model.DialogProperties;
 import com.github.angads25.filepicker.view.FilePickerDialog;
 
 import java.io.File;
+import java.text.DecimalFormat;
 
 import m5tt.com.smsimagetransfer.SMS.OnSMSSendCompleteListener;
 import m5tt.com.smsimagetransfer.SMS.OnSMSSendProgressUpdateListener;
@@ -42,6 +43,7 @@ public class MainActivityFragment extends Fragment
         View root = inflater.inflate(R.layout.fragment_main, container, false);
 
         final EditText phoneNumEditText = root.findViewById(R.id.phoneNum_EditText);
+        final EditText fileSizeDisplay = root.findViewById(R.id.imageSize);
         Button uploadImageButton = root.findViewById(R.id.uploadImage_Button);
         final ImageView imagePreviewImageView = root.findViewById(R.id.imagePreview_ImageView);
         Button sendImageButton = root.findViewById(R.id.send_Button);
@@ -76,6 +78,10 @@ public class MainActivityFragment extends Fragment
                             Bitmap imageBitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
                             imagePreviewImageView.setImageBitmap(imageBitmap);
                             currentUploadedImage = imageFile;
+                            fileSizeDisplay.setVisibility(View.VISIBLE);
+
+                            DecimalFormat format = new DecimalFormat("##.00");
+                            fileSizeDisplay.setText(format.format((double)imageFile.length() / 1024.0) + "KB");
                         }
                     }
                 });

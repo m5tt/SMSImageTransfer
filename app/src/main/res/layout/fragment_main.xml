@@ -38,6 +38,17 @@
         android:layout_marginStart="8dp"
         android:src="@android:color/transparent"/>
 
+    <EditText
+        android:id="@+id/imageSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:visibility="gone" />
+
     <Button
         android:id="@+id/send_Button"
         style="@style/Widget.AppCompat.Button"
