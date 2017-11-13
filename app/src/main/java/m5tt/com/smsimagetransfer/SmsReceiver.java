@@ -34,6 +34,7 @@ public class SmsReceiver extends BroadcastReceiver
 
         for (SmsMessage smsMessage : receivedMessages)
         {
+            // TODO: pretty sure contact needs to be formatted so we can use it to send
             String contact = smsMessage.getOriginatingAddress();
             String message = smsMessage.getMessageBody();
 
