@@ -10,9 +10,19 @@ import java.text.ParseException;
  */
 
 class PacketHead {
+
+    public static int VERSION = 1;
+
+    // The marker for the start of the packet head
     public static final String beginMarker = "'-'";
+
+    // The marker for the end of the packet head
     public static final String endMarker = "'-'";
+
+    // Delimiter for separate header elements. Currently unused
     private static final String delimiter = "\\";
+
+    // The packet's number. Negative for control packets
     private int packetNum;
 
     private String stringRepresentation;
@@ -22,6 +32,7 @@ class PacketHead {
         this.stringRepresentation = beginMarker + packetNum + endMarker;
     }
 
+    // The packet number. Negative for control packets
     public int getPacketNum(){
         return this.packetNum;
     }
@@ -31,18 +42,30 @@ class PacketHead {
         return stringRepresentation;
     }
 
-    public int getLength(){
+    // Get the number of characters used by the head
+    int getLength(){
         return stringRepresentation.length();
     }
 
-    protected static PacketHead parse(String head) throws ParseException {
+    /**
+     * Parse a packet head from a string
+     * @param head The packet head as a string
+     * @return The packet head
+     * @throws ParseException if the string is not a packet head
+     */
+    static PacketHead parse(String head) throws ParseException {
         if(!isPacketHead(head))
             throw new ParseException("Invalid Packet Head", 0);
         int packetNum = Integer.parseInt(head.substring(beginMarker.length(),head.length()-endMarker.length()));
         return new PacketHead(packetNum);
     }
 
-    public static boolean isPacketHead(String head){
+    /**
+     * Check if the string is a packet head
+     * @param head the candidate string head
+     * @return True if is a packet head, false otherwise
+     */
+    private static boolean isPacketHead(String head){
         // Check header
         return head.matches("^"+beginMarker+"-?\\d+"+endMarker+"$");
     }

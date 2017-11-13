@@ -10,6 +10,8 @@ import java.util.regex.Pattern;
 
 public class Packet {
 
+    public static int VERSION = 1;
+
     public enum PacketType { MESSAGE_START, MESSAGE_END, MESSAGE_ACK, MESSAGE_CONTENT}
 
     // The size limit for an SMS
@@ -21,15 +23,18 @@ public class Packet {
     // The packet data
     private String body;
 
-    // The packet as a string
-    private String stringRepresentation;
-
+    // The packet's use in the data transmission
     private PacketType type;
 
     private Packet(){} // Disable default constructor
 
-    // Packet constructor
-    protected Packet(PacketHead head, String body) throws PacketSizeException {
+    /**
+     * Packet constructor
+     * @param head The message metadata head
+     * @param body The message body
+     * @throws PacketSizeException If the packet is greater than the SMS limit of 160 chars
+     */
+    Packet(PacketHead head, String body) throws PacketSizeException {
         this.head = head;
         this.body = body;
         this.type = PacketType.MESSAGE_CONTENT;
@@ -38,17 +43,39 @@ public class Packet {
         }
     }
 
+    /**
+     * Get the packet content
+     * @return The packet message part
+     */
     public String getBody(){
         return this.body;
     }
 
+    /**
+     * Get the packet type
+     * @return The packet type
+     */
     public PacketType getType(){
         return this.type;
     }
 
+    /**
+     * Set the packet type
+     * @param type The packet type
+     * @return The packet
+     */
+    Packet setType(PacketType type){
+        this.type = type;
+        return this;
+    }
+
+    /**
+     * Get the packet string representation for sending as SMS
+     * @return The packet as a string
+     */
     @Override
     public String toString(){
-        return stringRepresentation;
+        return head.toString()+ body;
     }
 
     /**
@@ -72,16 +99,55 @@ public class Packet {
         String packetBody = message.substring(head.getLength(),message.length());
 
         try {
-            Packet packet = new Packet(head, packetBody);
-            return packet;
+            // Create the new packet and set it's type;
+            return new Packet(head, packetBody).setType(packetTypeFromNum(head.getPacketNum()));
+
         }
         catch (PacketSizeException e) {
             throw new ParseException("Message is not a packet", 0);
         }
     }
 
+
+    /**
+     * Check if a message is a packet
+     * @param message The sms message to verify
+     * @return True if it is a packet, false otherwise
+     */
     public static boolean isPacket(String message){
         // Check header
         return message.matches("^'_'-?\\d+'_'");
+    }
+
+    /**
+     * Don't kill me Matt.
+     * Get the packet type from the packet number. Used so as to not bloat the ENUM
+     * Negative numbers used to represent non-message types to minimize header size
+     * @return
+     */
+    public static PacketType packetTypeFromNum(int val){
+        switch (val){
+            case -1:
+                return PacketType.MESSAGE_START;
+            case -2:
+                return PacketType.MESSAGE_END;
+            case -3:
+                return PacketType.MESSAGE_ACK;
+            default:
+                return PacketType.MESSAGE_CONTENT;
+        }
+    }
+
+    public static int packetTypeValueOf(PacketType type){
+        switch (type){
+            case MESSAGE_START:
+                return -1;
+            case MESSAGE_END:
+                return -2;
+            case MESSAGE_ACK:
+                return -3;
+            default:
+                return 0;
+        }
     }
 }
