@@ -35,8 +35,8 @@ import java.io.ByteArrayOutputStream;
  * @author Benedikt Waldvogel (Modifications)
  */
 
-public class Base91 implements EncodingScheme {
-
+public class Base91
+{
     private static final byte[] ENCODING_TABLE;
     private static final byte[] DECODING_TABLE;
     private static final int BASE;
@@ -55,7 +55,6 @@ public class Base91 implements EncodingScheme {
             DECODING_TABLE[ENCODING_TABLE[i]] = (byte) i;
     }
 
-    @Override
     public byte[] encode(byte[] data) {
         int estimatedSize = (int) Math.ceil(data.length * AVERAGE_ENCODING_RATIO);
         ByteArrayOutputStream output = new ByteArrayOutputStream(estimatedSize);
@@ -91,7 +90,6 @@ public class Base91 implements EncodingScheme {
         return output.toByteArray();
     }
 
-    @Override
     public byte[] decode(byte[] data) {
         int dbq = 0;
         int dn = 0;
