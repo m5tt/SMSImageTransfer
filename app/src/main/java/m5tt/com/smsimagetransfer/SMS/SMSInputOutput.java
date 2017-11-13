@@ -19,7 +19,7 @@ public class SMSInputOutput
 {
     private final static Converter converter = new Base91Converter();
 
-    public List<Packet> fileToPackets(String filename)
+    public List<Packet> fileToPackets(File file)
     {
         List<Packet> packets = null;
 
@@ -28,7 +28,7 @@ public class SMSInputOutput
             // TODO: confirm there's no issues with new String(readFile())
             packets = new PacketFactory()
                     .getMessagePackets(new String(
-                            (converter.encode(readFile(filename)))));
+                            (converter.encode(readFile(file)))));
         }
         catch (IOException e) // TODO
         {
@@ -45,9 +45,8 @@ public class SMSInputOutput
     }
 
 
-    private byte[] readFile(String filename) throws IOException
+    private byte[] readFile(File file) throws IOException
     {
-        File file = new File(filename);
         FileInputStream fis = new FileInputStream(file);
 
         byte[] data = new byte[(int) file.length()];
