@@ -1,5 +1,7 @@
 package m5tt.com.smsimagetransfer.SMS;
 
+import android.util.Base64;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -26,9 +28,14 @@ public class SMSInputOutput
         try
         {
             // TODO: confirm there's no issues with new String(readFile())
+            /*packets = new PacketFactory()
+                    .getMessagePackets(new String(
+                            (converter.encode(readFile(file)))));*/
+
+            // For emulator purposes, use base64 encode due to bug with reception of base 91
             packets = new PacketFactory()
                     .getMessagePackets(new String(
-                            (converter.encode(readFile(file)))));
+                            (Base64.encode(readFile(file),Base64.DEFAULT))));
         }
         catch (IOException e) // TODO
         {
