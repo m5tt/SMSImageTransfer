@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ import java.text.DecimalFormat;
 
 import m5tt.com.smsimagetransfer.SMS.OnSMSSendCompleteListener;
 import m5tt.com.smsimagetransfer.SMS.OnSMSSendProgressUpdateListener;
+import m5tt.com.smsimagetransfer.SMS.SMSPacketSender;
 import m5tt.com.smsimagetransfer.SMS.SMSSendPackage;
 import m5tt.com.smsimagetransfer.SMS.SMSSendProgress;
 import m5tt.com.smsimagetransfer.SMS.SMSSendingTask;
@@ -89,7 +91,10 @@ public class MainActivityFragment extends Fragment
                 }
                 disableViews();
                 imagePreviewImageView.setVisibility(View.INVISIBLE);
-                fileSizeDisplayTextView.setVisibility(View.INVISIBLE);
+                //fileSizeDisplayTextView.setVisibility(View.INVISIBLE);
+                final String previousText = fileSizeDisplayTextView.getText().toString();
+                final int prevColor = fileSizeDisplayTextView.getCurrentTextColor();
+                fileSizeDisplayTextView.setTextColor(Color.BLACK);
                 sendProgressBar.setProgress(0);
                 sendProgressBar.setVisibility(View.VISIBLE);
 
@@ -101,9 +106,18 @@ public class MainActivityFragment extends Fragment
                     public void SMSSendProgressUpdate(SMSSendProgress smsSendProgress)
                     {
                         // Update progress bar with current text count / total text count
-                        if (sendProgressBar.getMax() <= 0)
-                            sendProgressBar.setMax(smsSendProgress.getTotalTextMessages());
+                        sendProgressBar.setMax(smsSendProgress.getTotalTextMessages());
                         sendProgressBar.setProgress(smsSendProgress.getCurrentTextMessage());
+
+                        // ETA TRACKING
+                        int eta = (smsSendProgress.getTotalTextMessages() - smsSendProgress.getCurrentTextMessage()) * SMSPacketSender.SEND_DELAY_MILLIS;
+                        int hours = eta / 3600000;
+                        eta = eta - (hours * 3600000);
+                        int minutes = (eta / 60000);
+                        eta = eta - (minutes * 60000);
+                        eta = eta / 1000;
+
+                        fileSizeDisplayTextView.setText("ETA "+hours+"H"+minutes+"M"+eta+"S");
                     }
                 });
 
@@ -115,7 +129,9 @@ public class MainActivityFragment extends Fragment
                         enableViews();
                         sendProgressBar.setVisibility(View.GONE);
                         imagePreviewImageView.setVisibility(View.VISIBLE);
-                        fileSizeDisplayTextView.setVisibility(View.VISIBLE);
+                        //fileSizeDisplayTextView.setVisibility(View.VISIBLE);
+                        fileSizeDisplayTextView.setText(previousText);
+                        fileSizeDisplayTextView.setTextColor(prevColor);
                         Toast.makeText(getContext(), "Successfully sent image", Toast.LENGTH_LONG).show();
                         // Re-enable views and inform the user that they successfully sent all text messages
                     }

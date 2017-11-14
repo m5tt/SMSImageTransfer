@@ -14,7 +14,7 @@ import m5tt.com.smsimagetransfer.SMS.Packets.Packet;
  */
 public class SMSPacketSender
 {
-    public static final int SEND_DELAY_MILLIS = 250;
+    public static final int SEND_DELAY_MILLIS = 100;
     private static final SmsManager smsManager = SmsManager.getDefault();
 
     public void sendAckPacket(Packet ackPacket, String contact)
