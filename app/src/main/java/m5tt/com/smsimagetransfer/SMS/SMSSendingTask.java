@@ -6,6 +6,7 @@ import java.io.File;
 import java.util.List;
 
 import m5tt.com.smsimagetransfer.SMS.Packets.Packet;
+import m5tt.com.smsimagetransfer.SMS.Packets.PacketFactory;
 
 /**
  * Created by Mark on 13-Nov-2017.
@@ -63,6 +64,11 @@ public class SMSSendingTask extends AsyncTask<SMSSendPackage, SMSSendProgress, S
                 return SMSSendingResult.FAILED;
             }
         }
+
+        PacketFactory factory = new PacketFactory();
+        Packet eom = factory.getMessageEndPacket("N/A");
+        packetSender.sendMessagePacket(eom, phoneNum);
+
         smsSendProgress.incrementTexts();
         publishProgress(smsSendProgress);
 
