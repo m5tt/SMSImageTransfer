@@ -14,22 +14,29 @@ import m5tt.com.smsimagetransfer.SMS.Packets.Packet;
  */
 public class SMSPacketSender
 {
-    private static final int SEND_DELAY_MILLIS = 100;
+    public static final int SEND_DELAY_MILLIS = 250;
     private static final SmsManager smsManager = SmsManager.getDefault();
 
     public void sendAckPacket(Packet ackPacket, String contact)
     {
-        smsManager.sendTextMessage(contact, null, ackPacket.toString(),
-                null, null);
+        smsManager.sendTextMessage(contact, null, ackPacket.toString(), null, null);
+    }
+
+    public void sendMessagePacket(Packet packet, String contact)
+    {
+        smsManager.sendTextMessage(contact, null, packet.toString(), null, null);
     }
 
     public void sendMessagePackets(List<Packet> contentPackets, String contact)
     {
         for (Packet contentPacket : contentPackets)
         {
-            smsManager.sendTextMessage(contact, null, contentPacket.toString(),
-                    null, null);
-            try { Thread.sleep(SEND_DELAY_MILLIS); } catch (InterruptedException e) {}
+            sendMessagePacket(contentPacket, contact);
+            try
+            {
+                Thread.sleep(SEND_DELAY_MILLIS);
+            }
+            catch (InterruptedException e) { }
         }
     }
 }

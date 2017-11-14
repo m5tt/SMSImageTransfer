@@ -32,6 +32,7 @@ public class SMSInputOutput
         }
         catch (IOException e) // TODO
         {
+
         }
 
         return packets;

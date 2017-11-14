@@ -3,6 +3,9 @@ package m5tt.com.smsimagetransfer.SMS;
 import android.os.AsyncTask;
 
 import java.io.File;
+import java.util.List;
+
+import m5tt.com.smsimagetransfer.SMS.Packets.Packet;
 
 /**
  * Created by Mark on 13-Nov-2017.
@@ -41,7 +44,27 @@ public class SMSSendingTask extends AsyncTask<SMSSendPackage, SMSSendProgress, S
 
         // Handle ack packet stuff
 
-        packetSender.sendMessagePackets(fileConverter.fileToPackets(file), phoneNum);
+        List<Packet> packetList = fileConverter.fileToPackets(file);
+
+        SMSSendProgress smsSendProgress = new SMSSendProgress(packetList.size());
+
+        for (int i = 0; i < packetList.size(); i++)
+        {
+            packetSender.sendMessagePacket(packetList.get(i), phoneNum);
+            smsSendProgress.incrementTexts();
+            publishProgress(smsSendProgress);
+
+            try
+            {
+                Thread.sleep(SMSPacketSender.SEND_DELAY_MILLIS);
+            }
+            catch (InterruptedException e)
+            {
+                return SMSSendingResult.FAILED;
+            }
+        }
+        smsSendProgress.incrementTexts();
+        publishProgress(smsSendProgress);
 
         return SMSSendingResult.SUCCESS;
     }
