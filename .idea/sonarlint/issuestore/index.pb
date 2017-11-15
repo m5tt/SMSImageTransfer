@@ -1,8 +1,6 @@
 
 €
 Papp/src/main/java/m5tt/com/smsimagetransfer/SMS/Packets/PacketSizeException.java,e/2/e2428f74c20efc9a30fdbf8cdbed9452db862d69
-x
-Happ/src/main/java/m5tt/com/smsimagetransfer/Encoding/EncodingScheme.java,c/3/c3fbeb8ac26a3ddcebf81e216cca7a64a137e4a2
 w
 Gapp/src/main/java/m5tt/com/smsimagetransfer/SMS/Packets/PacketHead.java,6/9/697437e361b7704476094cd5ccdbe3baefc0807f
 s
@@ -10,6 +8,35 @@ Capp/src/main/java/m5tt/com/smsimagetransfer/SMS/Packets/Packet.java,7/0/70fe1c
 p
 @app/src/main/java/m5tt/com/smsimagetransfer/Encoding/Base91.java,e/3/e3d93512af7e939eceb317b283edae245ec074c8
 z
-Japp/src/main/java/m5tt/com/smsimagetransfer/SMS/Messages/DataTransfer.java,6/8/686be211b0c39a7e20de061490d2f671f15d7397
-z
 Japp/src/main/java/m5tt/com/smsimagetransfer/SMS/Packets/PacketFactory.java,5/7/5786a04bdf29ae45d5767cccd115c4fa781edd17
+P
+ app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
+y
+Iapp/src/main/java/m5tt/com/smsimagetransfer/SMS/Messages/DataEncoder.java,0/2/026a0444d4717240a13d7206e8bc9e28806ef529
+y
+Iapp/src/main/java/m5tt/com/smsimagetransfer/SMS/Messages/DataDecoder.java,8/e/8e2ffa32bb733e82cabcd7cbbdb8fcc200bed1d5
+s
+Capp/src/main/java/m5tt/com/smsimagetransfer/SMS/SMSSendPackage.java,6/5/659d6189c0930e46e6ccd681e4495f4934daf93a
+s
+Capp/src/main/java/m5tt/com/smsimagetransfer/Encoding/Converter.java,3/4/34fe3d15bb9706352c3fae14988034c68d5d52b3
+s
+Capp/src/main/java/m5tt/com/smsimagetransfer/SMS/SMSInputOutput.java,c/3/c3fe85db18f80513f1a54f78ac12c65f4fea4829
+y
+Iapp/src/main/java/m5tt/com/smsimagetransfer/Encoding/Base91Converter.java,8/d/8d889b1e8e4639cb572f03e4346f271bc79b631b
+t
+Dapp/src/main/java/m5tt/com/smsimagetransfer/SMS/SMSPacketSender.java,7/e/7ec4546489e94da408e7920c83ca6d4d1c24a810
+s
+Capp/src/main/java/m5tt/com/smsimagetransfer/SMS/SMSSendingTask.java,6/9/69e67cc1575ae00667024efed99f78e99bf2885a
+u
+Eapp/src/main/java/m5tt/com/smsimagetransfer/MainActivityFragment.java,b/c/bc6a6e18447ae2f91f2720633b17dbef4c58876f
+m
+=app/src/main/java/m5tt/com/smsimagetransfer/MainActivity.java,9/2/92ed3a7724351d349facb5c32211d51b12206e49
+p
+@app/src/main/java/m5tt/com/smsimagetransfer/SMS/SMSReceiver.java,9/7/971291f0f00f1003d910f250fdde2bc1804a79e3
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+~
+Napp/src/main/java/m5tt/com/smsimagetransfer/SMS/OnSMSSendCompleteListener.java,3/b/3bbb75e9e585c163af400a3a1697caf08f38e577
+„
+Tapp/src/main/java/m5tt/com/smsimagetransfer/SMS/OnSMSSendProgressUpdateListener.java,d/d/ddc914ed5b6eb197536f3ba510160c35253cf6c3

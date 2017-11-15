@@ -1,6 +1,9 @@
 
-Isquid:S1444"-Make this "public static VERSION" field final(˜È™á8˜þ¯Ÿû+
 †"squid:ClassVariableVisibilityCheck"SMake VERSION a static final constant or non-public and provide accessors if needed.(˜È™á8˜þ¯Ÿû+
-rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(›‚ãÜøÿÿÿÿ
+usquid:S3008"YRename this field "PACKET_PATTERN" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Êž§ñ8é©ÁÉû+
 nsquid:S3008"RRename this field "VERSION" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜È™á8˜þ¯Ÿû+
+Psquid:S1444"4Make this "public static PACKET_PATTERN" field final(Êž§ñ8é©ÁÉû+
 lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ãé‚»ùÿÿÿÿ8ÈÓÜžû+
+Isquid:S1444"-Make this "public static VERSION" field final(˜È™á8˜þ¯Ÿû+
+"squid:ClassVariableVisibilityCheck"ZMake PACKET_PATTERN a static final constant or non-public and provide accessors if needed.(Êž§ñ8é©ÁÉû+
+rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(›‚ãÜøÿÿÿÿ

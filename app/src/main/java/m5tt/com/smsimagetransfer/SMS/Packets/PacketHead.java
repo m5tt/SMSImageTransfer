@@ -1,8 +1,8 @@
 package m5tt.com.smsimagetransfer.SMS.Packets;
 
-import android.preference.PreferenceActivity;
-
 import java.text.ParseException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Packet metadata indicating packet number of count, as well as a time-based unique identifier
@@ -14,13 +14,17 @@ class PacketHead {
     public static int VERSION = 1;
 
     // The marker for the start of the packet head
-    public static final String beginMarker = "'-'";
+    public static final String BEGIN_MARKER = "'-'";
 
     // The marker for the end of the packet head
-    public static final String endMarker = "'-'";
+    public static final String END_MARKER = "'-'";
 
     // Delimiter for separate header elements. Currently unused
-    private static final String delimiter = "\\";
+    private static final String DELIMITER = "\\";
+
+    public static final Pattern HEAD_PATTERN = Pattern.compile("^"+ BEGIN_MARKER +"-?\\d+"+ END_MARKER +"$");
+
+    public static Pattern HEAD_PARSE_PATTERN = Pattern.compile("'-'-?\\d+'-'");
 
     // The packet's number. Negative for control packets
     private int packetNum;
@@ -29,7 +33,7 @@ class PacketHead {
 
     PacketHead(int packetNum){
         this.packetNum = packetNum;
-        this.stringRepresentation = beginMarker + packetNum + endMarker;
+        this.stringRepresentation = BEGIN_MARKER + packetNum + END_MARKER;
     }
 
     // The packet number. Negative for control packets
@@ -56,7 +60,7 @@ class PacketHead {
     static PacketHead parse(String head) throws ParseException {
         if(!isPacketHead(head))
             throw new ParseException("Invalid Packet Head", 0);
-        int packetNum = Integer.parseInt(head.substring(beginMarker.length(),head.length()-endMarker.length()));
+        int packetNum = Integer.parseInt(head.substring(BEGIN_MARKER.length(),head.length()- END_MARKER.length()));
         return new PacketHead(packetNum);
     }
 
@@ -67,6 +71,7 @@ class PacketHead {
      */
     private static boolean isPacketHead(String head){
         // Check header
-        return head.matches("^"+beginMarker+"-?\\d+"+endMarker+"$");
+        Matcher m = HEAD_PATTERN.matcher(head);
+        return m.find();
     }
 }

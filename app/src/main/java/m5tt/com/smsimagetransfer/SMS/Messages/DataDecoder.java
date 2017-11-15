@@ -1,5 +1,7 @@
 package m5tt.com.smsimagetransfer.SMS.Messages;
 
+import android.util.Base64;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -42,8 +44,8 @@ public class DataDecoder {
             messageBuilder.append(packet.getBody());
         }
 
-        Converter converter = new Base91Converter();
-        decodedData = converter.decode(messageBuilder.toString().getBytes());
+        //Converter converter = new Base91Converter();
+        decodedData = Base64.decode(messageBuilder.toString(), Base64.DEFAULT);
     }
 
     public void write() throws IOException {

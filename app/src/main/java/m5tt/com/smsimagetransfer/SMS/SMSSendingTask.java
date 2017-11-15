@@ -37,6 +37,8 @@ public class SMSSendingTask extends AsyncTask<SMSSendPackage, SMSSendProgress, S
     @Override
     protected SMSSendingResult doInBackground(SMSSendPackage... smsSendPackages)
     {
+        PacketFactory factory = new PacketFactory();
+
         File file = smsSendPackages[0].getFile();
         String phoneNum = smsSendPackages[0].getPhoneNum();
 
@@ -47,8 +49,13 @@ public class SMSSendingTask extends AsyncTask<SMSSendPackage, SMSSendProgress, S
 
         List<Packet> packetList = fileConverter.fileToPackets(file);
 
+        // SEND START OF MESSAGE
+        Packet som = factory.getMessageStartPacket(file.getName(), packetList.size(), "Base64");
+        packetSender.sendMessagePacket(som,phoneNum);
+
         SMSSendProgress smsSendProgress = new SMSSendProgress(packetList.size());
 
+        // SEND MESSAGE CONTENT
         for (int i = 0; i < packetList.size(); i++)
         {
             packetSender.sendMessagePacket(packetList.get(i), phoneNum);
@@ -65,7 +72,7 @@ public class SMSSendingTask extends AsyncTask<SMSSendPackage, SMSSendProgress, S
             }
         }
 
-        PacketFactory factory = new PacketFactory();
+        // SEND END OF MESSAGE
         Packet eom = factory.getMessageEndPacket("N/A");
         packetSender.sendMessagePacket(eom, phoneNum);
 

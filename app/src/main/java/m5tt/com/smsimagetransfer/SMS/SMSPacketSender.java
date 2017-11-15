@@ -4,6 +4,7 @@ import android.telephony.SmsManager;
 import java.util.List;
 
 import m5tt.com.smsimagetransfer.SMS.Packets.Packet;
+import m5tt.com.smsimagetransfer.SMS.Packets.PacketFactory;
 
 /**
  * Static helper class for sending sms packets
@@ -38,5 +39,9 @@ public class SMSPacketSender
             }
             catch (InterruptedException e) { }
         }
+
+        PacketFactory factory = new PacketFactory();
+        Packet eom = factory.getMessageEndPacket("N/A");
+        sendMessagePacket(eom, contact);
     }
 }

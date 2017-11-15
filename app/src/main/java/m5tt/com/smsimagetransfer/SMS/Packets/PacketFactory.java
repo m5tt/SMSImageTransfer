@@ -15,11 +15,11 @@ public class PacketFactory {
 
     public Packet getMessageStartPacket(String filename, int messageLength, String encoding){
         PacketHead head = new PacketHead(Packet.packetTypeValueOf(Packet.PacketType.MESSAGE_START));
-        String messageInfo ="NAME:"+filename + "|" +
-                            "LEN:"+messageLength +  "|" +
-                            "ENCODING:"+encoding + "|" +
-                            "V_APPLICATION:"+ 1 + "|" +
-                            "V_PACKET:"+Packet.VERSION + "|" +
+        String messageInfo ="NAME:"+filename + ";" +
+                            "LEN:"+messageLength +  ";" +
+                            "ENCODING:"+encoding + ";" +
+                            "V_APPLICATION:"+ 1 + ";" +
+                            "V_PACKET:"+Packet.VERSION + ";" +
                             "V_HEAD:"+PacketHead.VERSION;
         try {
             return new Packet(head,messageInfo).setType(Packet.PacketType.MESSAGE_START);

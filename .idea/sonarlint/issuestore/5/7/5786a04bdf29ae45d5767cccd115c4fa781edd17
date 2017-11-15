@@ -1,3 +1,7 @@
 
-rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(›‚ãÜøÿÿÿÿ
 \squid:UselessImportCheck"4Remove this unused import 'android.app.Application'.(¢¶ÿI8¤ë½Ÿû+
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8 ¬ƒ»û+
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8 ¬ƒ»û+
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8 ¬ƒ»û+
+rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(›‚ãÜøÿÿÿÿ
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8 ¬ƒ»û+

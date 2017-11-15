@@ -12,10 +12,12 @@ public class Packet {
 
     public static int VERSION = 1;
 
+    public static Pattern PACKET_PATTERN = Pattern.compile("^'-'-?\\d+'-'");
+
     public enum PacketType { MESSAGE_START, MESSAGE_END, MESSAGE_ACK, MESSAGE_CONTENT}
 
     // The size limit for an SMS
-    public static final int CHAR_LIMIT=160;
+    public static final int CHAR_LIMIT=140;
 
     // The metadata for the packet
     private PacketHead head;
@@ -92,10 +94,10 @@ public class Packet {
             throw new ParseException("Message is not a packet",0);
 
         // Use REGEX to extract the head
-        Pattern pattern = Pattern.compile("^'_'\\d+'_'");
-        Matcher matcher = pattern.matcher(message);
+        Matcher matcher = PacketHead.HEAD_PARSE_PATTERN.matcher(message);
 
         // Parse the head
+        matcher.find();
         PacketHead head = PacketHead.parse(matcher.group(0));
 
         // Get the body
@@ -119,7 +121,8 @@ public class Packet {
      */
     public static boolean isPacket(String message){
         // Check header
-        return message.matches("^'_'-?\\d+'_'");
+        Matcher m = PACKET_PATTERN.matcher(message);
+        return m.find();
     }
 
     /**

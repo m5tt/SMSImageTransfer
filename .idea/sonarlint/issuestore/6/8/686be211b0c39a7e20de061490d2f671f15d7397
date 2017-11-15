@@ -1,14 +1,0 @@
-
-Nsquid:S1135"2Complete the task associated to this TODO comment.(…ïœ†8Ë“ú û+
-Vsquid:S1481"5Remove this unused "endMessagePacket" local variable.(æ±Ê˜şÿÿÿÿ8×½˜¡û+
-hsquid:UselessImportCheck":Remove this unused import 'java.io.FileNotFoundException'.(·î™ùÿÿÿÿ8ÃÕË û+
-Msquid:S1135"2Complete the task associated to this TODO comment.(¾íüQ8¥éˆ¡û+
-Ssquid:S1135"2Complete the task associated to this TODO comment.(ğñ”æüÿÿÿÿ8ÿü…¡û+
-esquid:S1854"DRemove this useless assignment to local variable "endMessagePacket".(æ±Ê˜şÿÿÿÿ8×½˜¡û+
-esquid:UselessImportCheck"<Remove this unused import 'java.security.DigestInputStream'.(Ğºšğ8×½˜¡û+
-ksquid:S2674"JCheck the return value of the "read" call to see how many bytes were read.(‰å€Œıÿÿÿÿ8ÃÕË û+
-Nsquid:S1135"2Complete the task associated to this TODO comment.(…§À°8ÔĞ™¡û+
-rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(÷¥²¢ıÿÿÿÿ
-asquid:UselessImportCheck"8Remove this unused import 'java.security.MessageDigest'.(Œğ²»8×½˜¡û+
-gsquid:S1854"FRemove this useless assignment to local variable "startMessagePacket".(”Œµ¼ùÿÿÿÿ8¤Š‚¡û+
-Xsquid:S1481"7Remove this unused "startMessagePacket" local variable.(”Œµ¼ùÿÿÿÿ8¤Š‚¡û+
